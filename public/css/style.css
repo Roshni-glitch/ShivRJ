@@ -1,0 +1,252 @@
+/* Navbar styling */
+.navbar {
+    background-color: #ffffff !important;
+    /* height: 5rem !important; */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+/* Body padding to account for fixed navbar */
+body {
+    background-color: #f8f8f8;
+    padding-top: 5rem; /* Increased padding to avoid overlap */
+}
+
+/* Navbar link styles */
+.nav-item a {
+    color: #121212 !important;
+    font-size: 1.2rem;
+    
+}
+
+.navbar-brand {
+    color: #121212 !important;
+    font-size: 1.7rem;
+    padding: 1rem 1.5rem;
+}
+
+/* Filter form container */
+form {
+    background-color: transparent;
+    border-radius: 12px;
+    padding: 10px 15px;
+    /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Filter input styles */
+form .form-select {
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+}
+
+/* Filter button */
+form .btn-dark {
+    background-color: #000;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    border: none;
+}
+
+/* Add spacing between filter and navbar */
+body .filter-container {
+    margin-top: 1rem; /* Adjust spacing between the navbar and filter */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* Card container for layout */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem; /* Space between cards */
+    justify-content: center; /* Center the cards */
+    margin-top: 2rem;
+}
+
+/* Card styles */
+.card {
+    width: 22rem; /* Adjust card width */
+    border-radius: 12px;
+    overflow: hidden; /* Smoothly clip overflowing content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth hover effects */
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+/* Card image styling */
+.card-img-top {
+    width: 100%;
+    height: 12rem; /* Consistent height for all images */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    border-bottom: 1px solid #ddd; /* Separate image from content */
+}
+
+/* Card body styles */
+.card-body {
+    padding: 1rem;
+    text-align: center; /* Center-align the text */
+}
+
+/* Card title */
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333; /* Darker text for better readability */
+}
+
+/* Card text */
+.card-text {
+    font-size: 1rem;
+    color: #555; /* Softer color for secondary text */
+    margin-bottom: 1rem;
+}
+
+/* Button styles */
+.card-body .btn-dark {
+    background-color: #000;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    width:100%;
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+/* Button hover effect */
+.card-body .btn-dark:hover {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* General container and card spacing */
+.container {
+    margin-top: 2rem;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Card title styling */
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Card body and footer button styling */
+.card-body {
+    padding: 1.25rem;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1.25rem;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Form styling */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Section headers */
+h2, h4 {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Available BHK section layout */
+.row {
+    margin-top: 1.5rem;
+}
+
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+

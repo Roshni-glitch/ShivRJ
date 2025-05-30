@@ -1,0 +1,30 @@
+
+
+<% layout("/layouts/layout.ejs") %>
+<title>Login</title>
+<body>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card p-4 shadow-sm rounded" style="background-color: white; border-radius: 10px; width: 90%; max-width: 900px;">
+            <h3 class="text-center mb-4" style="font-weight: bold; color: #343a40;">Login</h3>
+            <form action="/login" method="POST" class="d-flex flex-column">
+                
+                <div class="mb-3">
+                    <label for="projectname" class="form-label">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control w-190"  placeholder="Username"required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="area" class="form-label">Password:</label>
+                    <input type="text" name="password" id="password" class="form-control w-175" required placeholder="Password">
+                </div>
+
+                
+                <button type="submit" class="btn btn-dark w-50 mx-auto" style="border-radius: 10px; font-size: 0.9rem; font-weight: bold;">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

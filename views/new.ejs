@@ -1,0 +1,41 @@
+<% layout("/layouts/layout.ejs") %>
+<title>Add your Properties</title>
+<body>
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="card p-4 shadow-sm rounded" style="background-color: white; border-radius: 10px; width: 90%; max-width: 900px;">
+            <h3 class="text-center mb-4">Create a New Unit</h3>
+            <form action="/new-page" method="POST" enctype="multipart/form-data" class="d-flex flex-column">
+                
+                <div class="mb-3">
+                    <label for="projectname" class="form-label">Project Name:</label>
+                    <input type="text" name="projectname" id="projectname" class="form-control w-100" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="area" class="form-label">Area:</label>
+                    <input type="text" name="area" id="area" class="form-control w-100" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" name="location" id="location" class="form-control w-100" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price:</label>
+                    <input type="text" name="price" id="price" class="form-control w-100" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload Image:</label>
+                    <input type="file" name="img" id="image" class="form-control w-100" multiple required>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-50 mx-auto" style="border-radius: 10px; font-size: 0.9rem; font-weight: bold;">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

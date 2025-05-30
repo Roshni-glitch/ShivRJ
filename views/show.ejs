@@ -1,0 +1,106 @@
+<% layout("/layouts/layout.ejs") %>
+<title><%=unit.projectname%></title>
+<meta name="description" content="Explore <%= unit.projectname %> located in <%= unit.location %>. Spacious area of <%= unit.area %> sq.ft, priced at ₹<%= unit.price %>. Contact us today!">
+<meta name="keywords" content="<%= unit.projectname %>, property in <%= unit.location %>, buy home, real estate, apartments">
+<body style="background-color: #f8f9fa;">
+    <div class="container-fluid p-4 d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <!-- Main Card for Unit Details -->
+        <div class="card w-100" style="max-width: 1200px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); border-radius: 15px; overflow: hidden;">
+            <!-- Unit Image Carousel -->
+            <div id="unitImagesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Loop over unit images -->
+                    <% unit.img.forEach((image, index) => { %>
+                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                        <img src="<%= image.url %>" class="d-block w-100" alt="<%=unit.projectname%>" style="height: 600px; object-fit: cover;">
+                    </div>
+                    <% }); %>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#unitImagesCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#unitImagesCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+            <!-- Unit Details -->
+            <div class="card-body p-5">
+                <h2 class="card-title text-center mb-4" style="font-weight: bold;"><%= unit.projectname %></h2>
+                <ul class="list-group list-group-flush mb-4">
+                    <li class="list-group-item py-3"><strong>Area:</strong> <%= unit.area %> sqft</li>
+                    <li class="list-group-item py-3"><strong>Location:</strong> <%= unit.location %></li>
+                    <li class="list-group-item py-3"><strong>Price:</strong> ₹<%= unit.price %></li>
+                </ul>
+
+                <!-- Admin Actions -->
+                <% if (isAdmin) { %>
+                <div class="text-center d-flex justify-content-center gap-3">
+                    <form action="/edit/<%= unit._id %>">
+                        <button type="submit" class="btn btn-light btn-lg px-4" style="border: 1px solid #000;">Edit</button>
+                    </form>
+                    <form action="/delete/<%= unit._id %>" method="post">
+                        <button type="submit" class="btn btn-dark btn-lg px-4">Delete</button>
+                    </form>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add BHK Form (Only for Admins) -->
+    <% if (isAdmin) { %>
+    <div class="container mt-5">
+        <div class="card p-4" style="max-width: 600px; margin: auto;">
+            <h3 class="card-title text-center">Add BHK</h3>
+            <form action="/<%= unit._id %>/addbhk" method="post">
+                <div class="form-group mb-3">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" name="type" class="form-control" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="price">Price:</label>
+                    <input type="text" id="price" name="price" class="form-control" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="price">For:</label>
+                    <input type="text" id="price" name="for" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-dark btn-lg w-100">Add BHK</button>
+            </form>
+        </div>
+    </div>
+    <% } %>
+
+    <!-- Available BHKs Section -->
+    <% if (unit.types.length > 0) { %>
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4">Available BHKs</h2>
+        <div class="row g-4">
+            <% for (bhk of unit.types) { %>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card h-100 p-3">
+                    <div class="card-body text-center">
+                        <h5 class="mb-3"><strong><%= bhk.type %>BHK</strong> - ₹<%= bhk.price %></h5>
+                        <br>
+                        <h5 class="mb-3"><strong><%= bhk.for %></strong></h5>
+                        <!-- WhatsApp Button -->
+                        <a href="https://wa.me/919136160892?text=Hi%2C%20I%20am%20interested%20in%20the%20<%= encodeURIComponent(bhk.type) %>%20BHK%20priced%20at%20%E2%82%B9<%= encodeURIComponent(bhk.price) %>%20from%20<%= encodeURIComponent(unit.projectname) %>" 
+                            target="_blank" 
+                            class="btn btn-success btn-lg w-100 mb-3">Contact on WhatsApp</a>
+                        <% if (isAdmin) { %>
+                        <form action="/<%= unit._id %>/deletebhk/<%= bhk._id %>" method="post">
+                            <button type="submit" class="btn btn-dark btn-lg w-100">Delete</button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <% } %>
+</body>

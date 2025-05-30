@@ -1,0 +1,44 @@
+<% layout("/layouts/layout.ejs") %>
+<title>Properties in <%=unit.location%></title>
+<meta name="description" content="Find the best properties in <%= unit.location %>. Browse through our listings and choose your dream home today.">
+<meta name="keywords" content="properties in <%= unit.location %>, real estate <%= unit.location %>, buy home <%= unit.location %>, apartments">
+<body>
+  
+
+        <div class="card-container d-flex flex-wrap gap-3">
+        <% for (unit of units) { %>
+            <div class="card" style="width: 18rem;">
+                <!-- Carousel for Images -->
+                <div id="carousel<%= unit._id %>" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% unit.img.forEach((image, index) => { %>
+                        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                            <img src="<%= image.url %>" class="d-block w-100" alt="<%=unit.projectname%>" style="height: 200px; object-fit: cover;">
+                        </div>
+                        <% }); %>
+                    </div>
+                    <!-- Carousel controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= unit._id %>" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= unit._id %>" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <!-- Card Content -->
+                <div class="card-body">
+                    <h5 class="card-title"><%= unit.projectname %></h5>
+                    <p class="card-text">₹<%= unit.price %></p>
+                    <form action="/show/<%= unit._id %>">
+                        <button type="submit" class="btn btn-dark">Show Details</button>
+                    </form>
+                </div>
+            </div>
+        <% } %>
+    </div>
+    </div>
+</body>
+</html>  

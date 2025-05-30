@@ -1,0 +1,56 @@
+<% layout("/layouts/layout.ejs") %>
+<title>Home</title>
+<meta name="description" content="Discover the best real estate properties for sale. Explore top locations and premium projects with ShivrJ Real Estate.">
+<meta name="keywords" content="real estate, buy property, homes for sale, apartments, best properties">
+<body>
+    <div class="filter-container mb-4">
+        <form action="/filter" method="GET" class="d-flex align-items-center gap-3">
+            <label for="location" class="form-label mb-0">Search By Location:</label>
+            <select name="location" id="location" class="form-select">
+                <option value="">All Locations</option>
+                <% locations.forEach(location => { %>
+                    <option value="<%= location.name %>">
+                        <%= location.name %>
+                    </option>
+                <% }) %>
+            </select>
+            <button type="submit" class="btn btn-dark">Filter</button>
+        </form>
+    </div>
+
+    <div class="card-container d-flex flex-wrap gap-3">
+        <% for (unit of units) { %>
+            <div class="card" style="width: 18rem;">
+                <!-- Carousel for Images -->
+                <div id="carousel<%= unit._id %>" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <% unit.img.forEach((image, index) => { %>
+                        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                            <img src="<%= image.url %>" class="d-block w-100" alt="<%=unit.projectname%>" style="height: 200px; object-fit: cover;">
+                        </div>
+                        <% }); %>
+                    </div>
+                    <!-- Carousel controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= unit._id %>" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= unit._id %>" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <!-- Card Content -->
+                <div class="card-body">
+                    <h5 class="card-title"><%= unit.projectname %></h5>
+                    <p class="card-text">₹<%= unit.price %></p>
+                    <form action="/show/<%= unit._id %>">
+                        <button type="submit" class="btn btn-dark">Show Details</button>
+                    </form>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
